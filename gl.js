@@ -1,4 +1,4 @@
-export const bindPipeline = (canvas, options = {}) => {
+export const bind = (canvas, options = {}) => {
   const gl = canvas.getContext('webgl', {
     preserveDrawingBuffer: options.preserveDrawingBuffer ?? true,
   });
@@ -17,7 +17,6 @@ export const bindPipeline = (canvas, options = {}) => {
   let fragmentSource = null;
   const uniforms = new Map();
 
-  // Full-screen quad
   const buffer = gl.createBuffer();
   gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
   gl.bufferData(
@@ -26,7 +25,6 @@ export const bindPipeline = (canvas, options = {}) => {
     gl.STATIC_DRAW
   );
 
-  // Lazy-initialized Framebuffer Objects
   let ping = null;
   let pong = null;
 
